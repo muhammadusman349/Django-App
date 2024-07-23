@@ -8,7 +8,7 @@ from rest_framework import status
 
 # Create your views here.
 class SignupView(generics.ListCreateAPIView):
-    permission_classes  = [HasAPIKey]
+    permission_classes  = []
     serializer_class    = SignupSerializer
     queryset            = User.objects.all().order_by('-id')
 
@@ -16,7 +16,7 @@ class SignupView(generics.ListCreateAPIView):
         return super().post(request, *args, **kwargs)
 
 class SigninView(generics.GenericAPIView):
-    permission_classes      = [HasAPIKey]
+    permission_classes      = []
     serializer_class        = SigninSerializer
     queryset                = User.objects.all().order_by('-id')
 

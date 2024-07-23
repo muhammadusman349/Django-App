@@ -46,7 +46,7 @@ class SignupSerializer(serializers.ModelSerializer):
 
 class SigninSerializer(serializers.ModelSerializer):
     email           = serializers.EmailField(max_length=120, required=True, min_length=3)
-    password        =   serializers.CharField(max_length= 100, required= True,style={'input_type': 'password'},write_only=True)
+    password        = serializers.CharField(max_length= 100, required= True,style={'input_type': 'password'},write_only=True)
     access_token    = serializers.CharField(max_length=200, min_length=5, read_only=True)
     refresh_token   = serializers.CharField(max_length=200, min_length=5, read_only=True)
 

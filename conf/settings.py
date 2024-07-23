@@ -93,7 +93,7 @@ SIMPLE_JWT = {
 }
 
 
-ROOT_URLCONF = 'conf.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
