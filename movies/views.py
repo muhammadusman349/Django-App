@@ -13,7 +13,7 @@ class ListCreateMovieAPIView(ListCreateAPIView):
     serializer_class = MoiveSerializer 
     queryset = Movie.objects.all()
     permission_classes = [IsAuthenticated]
-    pagination_class = [CustomPagination]
+    # pagination_class = CustomPagination
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = MovieFilter
     

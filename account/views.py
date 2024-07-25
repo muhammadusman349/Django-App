@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework_api_key.permissions import HasAPIKey
 from rest_framework import status
-
+from django.shortcuts import render
 
 # Create your views here.
 class SignupView(generics.ListCreateAPIView):
@@ -26,3 +26,6 @@ class SigninView(generics.GenericAPIView):
             return Response(serializer.validated_data,status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+def index(request):
+    return render(request, 'react/index.html')
