@@ -6,7 +6,7 @@ from .permissions import IsOwnerOrReadOnly
 from .serializers import MoiveSerializer
 from .pagination import CustomPagination
 from .filters import MovieFilter
-
+from rest_framework.exceptions import PermissionDenied
 # Create your views here.
 
 class ListCreateMovieAPIView(ListCreateAPIView):
@@ -18,7 +18,10 @@ class ListCreateMovieAPIView(ListCreateAPIView):
     filterset_class = MovieFilter
     
     def perform_create(self, serializer):
-        serializer.save(creator=self.request.user)
+        if self.request.user.is_authenticated:
+            serializer.save(creator=self.request.user)
+        else:
+            raise PermissionDenied("Authentication required to create a movie.")
 
 class RetrieveUpdateDestroyMovieAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = MoiveSerializer
